@@ -6,12 +6,15 @@ var long='';
 var x = '';
 var y='';
 
+//Definition der Optionen
+var options = { timeout: 31000, enableHighAccuracy: true, maximumAge: 90000 };
+
 //Wartet bis Seite geladen ist.
 document.addEventListener("deviceready", onDeviceReady, false);
 
 // Funktion welche ausgeführt wird wenn die Seite geladen ist.
 function onDeviceReady() {
-    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
 }
 
 
