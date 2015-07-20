@@ -5,10 +5,9 @@
         <group>
             <file>file:/C:/xampp/htdocs/App_BTh/js/geolocation.js</file>
             <file>file:/C:/xampp/htdocs/App_BTh/js/Uebersicht.js</file>
-            <file>file:/C:/xampp/htdocs/App_BTh/Uebermittlung.js</file>
+            <file>file:/C:/xampp/htdocs/App_BTh/js/Uebermittlung.js</file>
             <file>file:/C:/xampp/htdocs/App_BTh/index.html</file>
             <file>file:/C:/xampp/htdocs/App_BTh/js/Ereignis.js</file>
-            <file>file:/C:/xampp/htdocs/App_BTh/GPSErfassung.html</file>
             <file>file:/C:/xampp/htdocs/App_BTh/Ereignis.html</file>
             <file>file:/C:/xampp/htdocs/App_BTh/Abschluss.html</file>
         </group>
