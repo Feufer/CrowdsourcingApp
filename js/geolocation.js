@@ -37,16 +37,16 @@ function onSuccess(position) {
     lng = position.coords.longitude;
     /*Berechnen der LV03 Koordinaten aus den WGS84 Koordinaten und anschliessend
     in einen für die Session gültigen Speicher geschriben.*/
-    sessionStorage.setItem('y', WGStoCHy(lat, lng));
-    sessionStorage.setItem('x', WGStoCHx(lat, lng));
+    sessionStorage.setItem('y', parseInt(WGStoCHy(lat, lng)));
+    sessionStorage.setItem('x', parseInt(WGStoCHx(lat, lng)));
     //Ansteuerung des Div-Elements mit der ID geodata  
     var geoElement = document.getElementById('geodata'); 
     /*Definition welche Werte in das Element abgefüllt werden sollen
     mit sessionStorage.getItem('') werden die bestimmten Variabeln aus Sessions-
     Speicher gelesen*/
     geoElement.innerHTML =
-    '<h3> y-Koordinate LV03 </h3>' + sessionStorage.getItem('y') + '<br />' +
-    '<h3> x-Koordinate LV03 </h3>' + sessionStorage.getItem('x') + '<br />';  
+    '<b>y-Koordinate LV03</b>' + sessionStorage.getItem('y') + '<br />' +
+    '<b>x-Koordinate LV03</b>' + sessionStorage.getItem('x') + '<br />';  
 
 }
 
