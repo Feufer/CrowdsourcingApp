@@ -15,14 +15,14 @@ $(document).ready(function(){ //
              */
             type: 'POST',
             // URL zu welchem der Request gesendet wird.
-            url: "https://62.159.72.91/Webservice/", 
+            url: 'https://62.159.72.91/App_BTh/',/*"http://localhost/Webservice/","https://62.159.72.91/Webservice/", */
             
             username: "patrick.lenherr",
             password: "Diplomarbeit.2015",
             // Abfüllen des Strings der hinter den URL angehängt wird.
             data: "y=" + sessionStorage.getItem('y') + "&x=" + 
                     sessionStorage.getItem('x') + "&Ereignis=" + 
-                    sessionStorage.getItem('Ereignis'),
+                    sessionStorage.getItem('Ereignis')+ "&Zeit=" + sessionStorage.getItem('Zeit') ,
             /* Mit dem Handler für Status Codes wird überprüft, ob eine 'Bad
              * Request' zurückgegeben wird. Nachträglich wird die Reaktion bei
              * Auftretten eines solchen definiert
@@ -45,3 +45,4 @@ $(document).ready(function(){ //
         });
     });
 });
+
