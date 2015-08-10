@@ -36,7 +36,7 @@ $(document).ready(function(){ //
             // Definition was bei erfolgreicher Kommunikation geschieht.
             success: function(){
                 //Meldung das Übermittlung erfolgreich war
-                    alert('Die Übermittlung konnte erfolgreich durchgeführt werden');
+                    //alert('Die Übermittlung konnte erfolgreich durchgeführt werden');
                     //Weiterleitung auf Startseite.
                     location.href='../index.html';
                     //leeren des Sessionsspeichers
