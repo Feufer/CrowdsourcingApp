@@ -4,41 +4,57 @@
         <meta charset="UTF-8">
         <title>PhoneGap Application</title>
         <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-        <link rel="stylesheet" href="css/jquery.mobile-1.3.2.css" />
+        <link rel="stylesheet" href="css/jquery.mobile-1.3.2.css"  />
         <script src="js/jquery-1.10.2.min.js"></script>
         <script src="js/jquery.mobile-1.3.2.min.js"></script>
+        <script>
+            
+            
+        </script>
         
     </head>
     <body>
         <div data-role="page">
             <div data-role="header">
                 <h1>Home</h1>
-                <h2>Meldungen Erfassen</h2>
             </div>
-            <!-- Verlinkung in Eingabemaske für Meldung -->
-            <button id="linkEreignis" onclick="location.href='html/Ereignis.html'">Ereignis Erfassen</button> 
-            
-            <!-- Div-Element für den Notruf. Der Notruf funktioniert nur auf
-            einem Device. Die derzeitige Nummer führt einen Anruf zur FHNW durch
-            -->
-            <div>
-            <a href="tel:+41614674242"> <h1>Notruf</h1> </a>
-            </div>
-            
-            <div data-role="header">
-                <h2>Informationen</h2>
-            </div>  
-            
-            <!-- Verlinkung zur Google Übersichtskarte -->
-            <button id="Uebersichtskarte" onclick="location.href='html/Google_Adressen.html'">Übersichtskarte</button>
-            <!-- Derzeit noch ausstehende Funktionen
-            <button id="InfoBehördenmeldungen" onclick="location.href='Ereignis.html'">BehördenMeldungen</button>
-            <button id="InfoVorbereitung" onclick="location.href='Ereignis.html'">Vorbereitung</button>
-            <button id="InfoVerhaltenstipps" onclick="location.href='Ereignis.html'">Verhaltenstipps</button>
-            <button id="InfoNummern" onclick="location.href='Ereignis.html'">Wichtige Nummern</button>
-            -->
+            <ul class="menu">
+             <li id="one">
+              <span class="title">Notruf</span>
+             </li>
+             <li id="two" onclick="location.href='html/Ereignis.html'">
+              <span class="title">Meldung</span>
+              </li>
+             <li id="three">
+              <span class="title">Aufträge</span>
+             </li>
+             <li id="four">
+              <span class="title">Info</span>
+             </li>
+             <li id="five">
+              <span class="title">Unterstützung</span>
+             </li>
+             <li id="six">
+              <span class="title">Erfassung Infrastruktur</span>
+             </li>
+             <li id="seven" onclick="location.href='html/Google_Adressen.html'">
+              <span class="title">Übersichtskarte</span>
+             </li>
+             <li id="eight">
+              <span class="title">Vorsorge</span>
+             </li>
+             <li id="nine">
+              <span class="title">Behörden</span>
+             </li>
+             <li id="ten">
+              <span class="title">Warnungen</span>
+             </li>
+             <li id="eleven">
+              <span class="title">Impressum</span>
+             </li>
+            </ul>
             <div data-role="footer">
-                <h4>Copyright &copy 2015</h4>
+               <h4>Copyright &copy 2015</h4>
             </div>
         </div>
     </body>
