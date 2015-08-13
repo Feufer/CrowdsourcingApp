@@ -3371,3 +3371,157 @@ div.ui-slider-switch.ui-mini {
 		display: none;
 	}	
 }
+/*--------------------------------------------------------------------------------------*/
+/* Reset
+-------------------------------- */
+.widget ul.menu,
+.widget .post-body ul.menu {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    line-height: 0;
+}
+.post-body .menu { font-size: 1em }
+/* Clearfix
+-------------------------------- */
+.menu::after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+/* Menu
+-------------------------------- */
+.menu {
+    width: 100%;
+    hight: 100%;
+    margin: 0px 0px !important;
+    padding: 0px !important;
+    list-style: none;
+    background: #E0E0E0;
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.1) inset;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1) inset;
+    box-shadow: 0 1px 2px rgba(0,0,0,.1) inset;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+    .menu .cover { z-index: 2 }
+    .menu .cover:focus { outline: 0 }
+/* -------------------------------- */
+    .menu li {
+        position: relative;
+        float: left;
+        cursor: pointer;
+        height: 109px;
+        width: 44%;
+        margin: 10px 0 0 10px;
+        color: #fff;
+    }
+#one { width: 90% }
+.menu li:hover,
+.menu li:focus {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,.2)), to(rgba(255,255,255,0)));
+    background-image: -webkit-linear-gradient(top, rgba(255,255,255,.2), rgba(255,255,255,0));
+    background-image: -moz-linear-gradient(top, rgba(255,255,255,.2), rgba(255,255,255,0));
+    background-image: -ms-linear-gradient(top, rgba(255,255,255,.2), rgba(255,255,255,0));
+    background-image: -o-linear-gradient(top, rgba(255,255,255,.2), rgba(255,255,255,0));
+    background-image: linear-gradient(top, rgba(255,255,255,.2), rgba(255,255,255,0));
+}
+
+.menu #one{ 
+    margin-top: 2%;
+    margin-left: 5%}
+.menu #two { 
+    margin-top: 2%;
+    margin-left: 5%}
+.menu #three{ margin-left: 2% }
+.menu #four{ 
+    margin-top: 2%;
+    margin-left: 5%}
+.menu #five { margin-left: 2% }
+.menu #six{ 
+    margin-top: 2%;
+    margin-left: 5%}
+.menu #seven { margin-left: 2% }
+.menu #eight { 
+    margin-top: 2%;
+    margin-left: 5%}
+.menu #nine{ margin-left: 2% }
+.menu #ten{ 
+    margin-top: 2%;
+    margin-left: 5%}
+.menu #eleven {
+    margin-left: 2%;
+    margin-bottom: 2%}
+
+/* -------------------------------- */
+.menu #one,
+.menu #one .content,
+.menu #one .close { background-color: #5E5E5E }
+.menu #two,
+.menu #two .content,
+.menu #two .close { background-color: #767676 }
+.menu #three,
+.menu #three .content,
+.menu #three .close { background-color: #767676 }
+.menu #four,
+.menu #four .content,
+.menu #four .close { background-color: #767676 }
+.menu #five,
+.menu #five .content,
+.menu #five .close { background-color: #767676 }
+.menu #six,
+.menu #six .content,
+.menu #six .close { background-color: #5672b7 ; opacity: .8; }
+.menu #seven,
+.menu #seven .content,
+.menu #seven .close { background-color: #5672b7 ; opacity: .8; }
+.menu #eight,
+.menu #eight .content,
+.menu #eight .close { background-color: #5672b7 ; opacity: .8; }
+.menu #nine,
+.menu #nine .content,
+.menu #nine .close { background-color: #5672b7 ; opacity: .8;}
+.menu #ten,
+.menu #ten .content,
+.menu #ten .close { background-color: #5672b7 ; opacity: .8; }
+.menu #eleven,
+.menu #eleven .content,
+.menu #eleven .close { background-color: #5672b7 ; opacity: .8;  }
+/* -------------------------------- */
+.menu .title {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    font: italic bold 1em/120px 'trebuchet MS', Arial, helvetica;
+    opacity: .5;
+}
+.menu li:hover .title { opacity: .9 }
+/* -------------------------------- */
+.menu .close {
+    display: none;
+    border: 5px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    font: bold 20px/40px arial, helvetica;
+    position: absolute;
+    text-align: center;
+    top: -20px;
+    right: -20px;
+    -moz-border-radius: 40px;
+    -webkit-border-radius: 40px;
+    border-radius: 40px;
+}
+.menu .cover .close { display: block }
+
+/*------------------------------------------------------------------------*/
+#map {
+        width: 100%;
+        height: 400px;
+      }
