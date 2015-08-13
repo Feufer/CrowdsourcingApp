@@ -1,35 +1,206 @@
 <!DOCTYPE html>
 <html>
-    <head>
+	<head>
+        <title>Überichtskarte</title>
         <meta charset="UTF-8">
-        <title>PhoneGap Application</title>
-        <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-        <link rel="stylesheet" href="css/jquery.mobile-1.3.2.css" />
-        <script src="js/jquery-1.10.2.min.js"></script>
-        <script src="js/jquery.mobile-1.3.2.min.js"></script>
-        <script type="text/javascript" src="js/geolocation.js" charset="UTF-8"></script>
-        <script type="text/javascript" src="js/Ereignis.js"></script>
-    </head>
-    <body>
-        <h1>Geolocation Data</h1>
-        <div data-role="page">
-            <div data-role="header">
-                <h1>Meldung</h1>
-            </div>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script>
+            /*----------------------------------------------------------------*/
+            /*------------------Markerauflistung------------------------------*/
+            var pin1 = new Array('Wallmeroth Andreas ', 'Muttenz', 'Arzt', 47.52868, 7.648558);
+            var pin2 = new Array('Bachmann (-Kestenholz) Hans Ulrich ', 'Muttenz', 'Arzt', 47.525202, 7.646467);
+            var pin3 = new Array('Bättig Josef ', 'Muttenz', 'Arzt', 47.524441, 7.657741);
+            var pin4 = new Array('Kantonsspital Bruderholz  ', 'Bruderholz', 'Spital', 47.527215, 7.581907);
+            var pin5 = new Array('Kantonsspital Laufen', 'Laufen', 'Spital', 47.425065, 7.504862);
+            var pin6 = new Array('Kantonsspital Liestal', 'Liestal', 'Spital', 47.488664, 7.731247);
+            var pin7 = new Array('Polizeihauptposten Muttenz', 'Muttenz', 'Polizei', 47.528553, 7.648175);
+            var pin8 = new Array('Polizeihauptposten Pratteln', 'Pratteln', 'Polizei', 47.520501, 7.691334);
+            var pin9 = new Array('Polizeihauptposten Münchenstein', 'Münchenstein', 'Polizei', 47.519634, 7.614379);
+            var pin10 = new Array('TopPharm Apotheke Arbogast', 'Muttenz', 'Apotheke', 47.527724, 7.647394);
+            var pin11 = new Array('Rössli Apotheke', 'Muttenz', 'Apotheke', 47.525037, 7.646935);
+            var pin12 = new Array('TopPharm Apotheke Schänzli', 'Muttenz', 'Apotheke', 47.534119, 7.628938);
+            
+            //Erstellen eines Arrays mit allen Marker darin
+            var pins = new Array(pin1, pin2, pin3, pin4, pin5, pin6, pin7, pin8, pin9, pin10, pin11, pin12);
+            
+            
+            
+            /*----------------------------------------------------------------*/
+            /*------------------Kartendarstellung-----------------------------*/
+            //Variabel definietion
+            var map;
+            var markers=[];
+            
+            //Initialisierungsfunktion
+            function initialize() {
+                //Kartenoptionen
+                var mapOptions = {
+                    zoom: 11, //Zoomfaktor
+                    center: new google.maps.LatLng(47.525202, 7.646467),//Derzeit auf Grossraum BS zentriert
+                    mapTypeId: google.maps.MapTypeId.TERRAIN, //Typauswahl
+                    zoomControl: false, //Zoomsteuerung ausschalten
+                    streetViewControl: false, //Steetview Ausschalten
+                    panControl:false //Verschiebungskontrolle Ausschalten
+                };
+                
+                //Initialisierung neuer Map
+                map = new google.maps.Map(document.getElementById("map"));
+                
+                //setzten der Mapoptionen
+                map.setOptions(mapOptions);
+                
+                //Darstellen der Karte in schwarz-weiss
+                map.set('styles', [ { "stylers": [ { "saturation": -100 } ] } ]);
+                
+                //Iteratives Vorgehen für Marker Darstellung
+                for (var i = 0; i < pins.length; i++){
+                    var marker = createMarker(pins[i]); //Erstellung var marker
+                    markers.push(marker); //Darstellung Marker auf Karte
+                };
+                
+                //Infofenster generierung
+                infoWindow = new google.maps.InfoWindow();
+                
+                //Eventshandler bei Click auf Pin
+                google.maps.event.addListener(marker,'click',function(){
+                    infoWindow.setContent(createHtmlTable(pins[0])); //aufruf der Funktion zur generierung des Infofensters
+                    infoWindow.open(map,marker); 
+                });
+                
+                //Generierung neues Element
+                var centerControlDiv = document.createElement('div');
+                //Generierung Zurückbutton
+                var centerControl = new Zurueck(centerControlDiv, map);
+                centerControlDiv.index = 1;
+                //Darstellung in Fenster
+                map.controls[google.maps.ControlPosition.TOP_LEFT].push(centerControlDiv);
 
-            <h2>Koordinaten</h2>
+            };
             
-            <br/>
-            <div id="geodata">Bitte Position bestimmen</div> <!-- Div-Element, welches die erhobenen Positionsdaten �bernimmt. Text zwischen Tags dient als Platzhalter wenn noch keine Daten erfasst wurden.-->
-            <br/>
+            //Funktion für Zurückbutton
+            function Zurueck(ZurueckDiv, map) {
+
+                // Setzt Style für den Button
+                var ZurueckButton = document.createElement('div');
+                ZurueckButton.style.backgroundColor = '#fff';
+                ZurueckButton.style.border = '2px solid #fff';
+                ZurueckButton.style.borderRadius = '3px';
+                ZurueckButton.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+                ZurueckButton.style.cursor = 'pointer';
+                ZurueckButton.style.margin = '5px';
+                ZurueckButton.style.textAlign = 'center';
+                ZurueckButton.title = 'Zurück zum Hauptmenü';
+                ZurueckDiv.appendChild(ZurueckButton);
+
+                // SSetzt Style für den Buttontext
+                var ZurueckText = document.createElement('div');
+                ZurueckText.style.color = 'rgb(25,25,25)';
+                ZurueckText.style.fontFamily = 'Roboto,Arial,sans-serif';
+                ZurueckText.style.fontSize = '10px';
+                ZurueckText.style.lineHeight = '10px';
+                ZurueckText.style.padding = '1px';
+                ZurueckText.innerHTML = 'Zurück';
+                ZurueckButton.appendChild(ZurueckText);
+                
+                //Eventlistener für Click auf Zurückbutton
+                google.maps.event.addDomListener(ZurueckButton, 'click', function() {
+                  location.href='../index.html'; //Zurück zum Hauptmenü
+                });
+            }
             
-            <button id="posit">Position bestimmen</button>
             
-            <button id="Abschluss" onclick="location.href='Abschluss.html'">Abschliessen</button> 
             
-            <div data-role="footer">
-                <h4>Copyright &copy 2015</h4>
-            </div>
-        </div>
-    </body>
+            /*----------------------------------------------------------------*/
+            /*------------------Markergenerierung-----------------------------*/
+            //Funktion für Markergenerierung
+            function createMarker(currentPin){
+                //Erstellung der Variabel marker welche ein Google Mapsmarker beinhaltet
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(currentPin[3], currentPin[4]),//Definition der Koordinaten. Die Koordinaten werden aus der Liste gezogen
+                    map: map, //Definition in welche Karte gespeichert wird
+                    title: currentPin[0], //Übernahme des Pintitels aus Liste
+                });
+                
+                //Auswahlfunktion welche abhängig vom definierten Typ ein Icon wählt
+                switch (currentPin[2]){
+                    case "Arzt":
+                        marker.setIcon(new google.maps.MarkerImage(
+                            "../icons/Arzt.png",
+                            new google.maps.Size(18, 18),
+                            new google.maps.Point(0, 0),
+                            new google.maps.Point(9, 9),
+                            new google.maps.Size(18, 18))
+                        );
+                        break;
+                    case "Spital":
+                        marker.setIcon(new google.maps.MarkerImage(
+                            "../icons/Spital.png",
+                            new google.maps.Size(18, 18),
+                            new google.maps.Point(0, 0),
+                            new google.maps.Point(9, 9),
+                            new google.maps.Size(18, 18))
+                        );
+                        break;
+                    case "Apotheke":
+                        marker.setIcon(new google.maps.MarkerImage(
+                            "../icons/Apotheke.png",
+                            new google.maps.Size(18, 18),
+                            new google.maps.Point(0, 0),
+                            new google.maps.Point(9, 9),
+                            new google.maps.Size(18, 18))
+                        );
+                        break;
+                    case "Polizei":
+                        marker.setIcon(new google.maps.MarkerImage(
+                            "../icons/Polizei.png",
+                            new google.maps.Size(18, 18),
+                            new google.maps.Point(0, 0),
+                            new google.maps.Point(9, 9),
+                            new google.maps.Size(18, 18))
+                        );
+                        break;
+                }
+                
+                //Eventlistener für den Click
+                google.maps.event.addListener(marker, 'click', function() {
+                    infoWindow.setContent(createHtmlTable(currentPin))//Setzen des Infowindowsinhalts
+                    infoWindow.open(map,marker);
+                });
+                return marker; //Rückgabe des Markers aus der Funktion
+            }
+            
+            
+            
+            
+            
+            /*----------------------------------------------------------------*/
+            /*---------- Erstellen einer HTML-Tabelle für das Infowindow------*/
+            function createHtmlTable(pin){
+                //neues Array mit den Titeln
+                var keys = new Array('Name', 'Ort', 'Kategorie');
+                //Variabel für den html Text
+                var html='<table>';
+                //Abfüllen der Variabel html
+                for (var i = 0; i < keys.length; i++){
+                    html = html + '<tr valign="top"><td>' + keys[i] + ':</td><td>' + pin[i] + '</td></tr>';
+                }
+                html = html + '</table>';
+                //Rückgabe der Variabel html
+                return html;
+            }
+        </script>
+	</head>
+        <!--mit onload wird definiert was beim Laden des Fensters passiert. In
+            diesem Fall wird ein Mapelement geladen.-->
+	<body onload="initialize()">
+            <!--Div-Element für das Kartenfenster-->
+            <div id="map" style="
+                border:0 solid black;
+                float:none;
+                height:100vh;
+                margin:0;
+                padding:0%;
+                ">    
+            </div>        
+	</body>
 </html>
