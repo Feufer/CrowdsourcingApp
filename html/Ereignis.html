@@ -213,29 +213,25 @@
             
             
                 /*---------------Verschiebungsübernahme-----------------------*/
-        
+                //Generierung des Infowindows
                 var infowindow = new google.maps.InfoWindow({
                     content: "Position durch ziehen verändern"
                 });
-
+                
+                //Darstellung des Infowindows an der Position des Markers
                 infowindow.open(map, marker);
 
+                //Eventlistener für Markerbewegung
                 google.maps.event.addListener(marker, 'dragend', function() {
-                    updateInfoWindow ();
+                    updateKoord ();
                 });
-
-                google.maps.event.addListener(marker, 'drag', function() {
-                    updateInfoWindow ();
-                });
-                
-                function SetKoord(latLng){
-                    sessionStorage.setItem('lat',latLng.lat());
-                    sessionStorage.setItem('lng',latLng.lng());
-                }
-
-                function updateInfoWindow () {
+                            
+                //Update Funktion der Koord
+                function updateKoord () {
+                    //Übernehmen der Markerposition
                     latLng = marker.getPosition();
 
+                    //Speicherung in Sessionsspeicher. LV03-Koord werden aus Performancegründen erst beim Klick auf weiter erstellt.
                     sessionStorage.setItem('lat',latLng.lat());
                     sessionStorage.setItem('lng',latLng.lng());
                     
@@ -259,10 +255,10 @@
                         sessionStorage.setItem('Ereignis', $('#EreignisInput').val());
 
                         /* Berechnung der LV03-Koordinaten und Speicherung dieser in den
-                         * Sessionsspeicher
+                         * Sessionsspeicher. Übernahme von lat und lng aus dem Sessionsspeicher
                          */
-                        sessionStorage.setItem('y', parseInt(WGStoCHy(lat, lng)));
-                        sessionStorage.setItem('x', parseInt(WGStoCHx(lat, lng)));
+                        sessionStorage.setItem('y', parseInt(WGStoCHy(sessionStorage.getItem('lat'), sessionStorage.getItem('lng'))));
+                        sessionStorage.setItem('x', parseInt(WGStoCHx(sessionStorage.getItem('lat'), sessionStorage.getItem('lng'))));
 
                         // Folgend wird ein Zeitspempel erstellt
                         // Erstellung der Variabel Zeit in welche Datumsvariabeln ausgelesen werden können
@@ -325,7 +321,7 @@
                       
             <br/>
 
-            <!-- Ausführung Ereignis.js und Wechsel zu "Abschluss.html"-->
+            <!-- Ausführung Übergabe Ereignis und Koordinaten und Wechsel zu "Abschluss.html"-->
             <button id="Weiter">Weiter</button>
             
             <!-- Zurück zum Hauptmenü -->
