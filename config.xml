@@ -66,7 +66,6 @@
         <gap:plugin name="Example" />
         A list of available plugins are available at https://build.phonegap.com/docs/plugins
     -->
-    <gap:plugin name="html/phonegap-googlemaps-plugin-v1.2.5.apk" />
 
     
 
