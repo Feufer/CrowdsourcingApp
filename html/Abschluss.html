@@ -33,8 +33,9 @@
             /*----------------------------------------------------------------*/
             /*--------------------Übermittlung--------------------------------*/
             // Festlegung was beim Klick auf den Button mit der ID 'posit' passiert
-            $(document).ready(function(){ //
-                $('button#Abschicken').click(function(){
+            /*$(document).ready(function(){ //
+                $('button#Abschicken').click(function(){*/
+            function senden(){
                     // Ansteuern des HTML-Elements ausgabe und Änderung des Textes
                     document.getElementById("ausgabe").innerText = "Bitte warten...";
 
@@ -76,8 +77,7 @@
                             sessionStorage.clear();
                         }
                     });
-                });
-            });
+                }
         </script>
     </head>
     <body>
@@ -97,7 +97,7 @@
             <p id="ausgabe"></p>
             
             <!-- Ausführung Uebermittlung.js -->
-            <button id="Abschicken">Meldung senden</button>
+            <button id="Abschicken" onclick="senden()">Meldung senden</button>
             
             <!-- Zurück zur Ereigniserfassung -->
             <button id="Zurück" onclick="location.href='Ereignis.html'">Zurück</button>            
