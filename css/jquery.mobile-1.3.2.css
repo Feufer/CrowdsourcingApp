@@ -3433,29 +3433,59 @@ div.ui-slider-switch.ui-mini {
 
 .menu #one{ 
     margin-top: 2%;
-    margin-left: 5%}
+    margin-left: 5%;
+    margin-bottom: 2%;
+    margin-right: 5%}
 .menu #two { 
-    margin-top: 2%;
-    margin-left: 5%}
-.menu #three{ margin-left: 2% }
+    margin-top: 0%;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    margin-right: 1%}
+.menu #three{ 
+    margin-top: 0%;
+    margin-left: 1%;
+    margin-bottom: 2%;
+    margin-right: 5%}
 .menu #four{ 
-    margin-top: 2%;
-    margin-left: 5%}
-.menu #five { margin-left: 2% }
+    margin-top: 0%;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    margin-right: 1%}
+.menu #five { 
+    margin-top: 0%;
+    margin-left: 1%;
+    margin-bottom: 2%;
+    margin-right: 5%}
 .menu #six{ 
-    margin-top: 2%;
-    margin-left: 5%}
-.menu #seven { margin-left: 2% }
+    margin-top: 0%;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    margin-right: 1%}
+.menu #seven { 
+    margin-top: 0%;
+    margin-left: 1%;
+    margin-bottom: 2%;
+    margin-right: 5%}
 .menu #eight { 
-    margin-top: 2%;
-    margin-left: 5%}
-.menu #nine{ margin-left: 2% }
+    margin-top: 0%;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    margin-right: 1%}
+.menu #nine{ 
+    margin-top: 0%;
+    margin-left: 1%;
+    margin-bottom: 2%;
+    margin-right: 5%}
 .menu #ten{ 
-    margin-top: 2%;
-    margin-left: 5%}
-.menu #eleven {
-    margin-left: 2%;
-    margin-bottom: 2%}
+    margin-top: 0%;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    margin-right: 1%}
+.menu #eleven { 
+    margin-top: 0%;
+    margin-left: 1%;
+    margin-bottom: 2%;
+    margin-right: 5%}
 
 /* -------------------------------- */
 .menu #one,
