@@ -225,6 +225,11 @@
                 google.maps.event.addListener(marker, 'dragend', function() {
                     updateKoord ();
                 });
+                
+                                //Eventlistener für Markerbewegung
+                google.maps.event.addListener(marker, 'drag', function() {
+                    updateKoord ();
+                });
                             
                 //Update Funktion der Koord
                 function updateKoord () {
