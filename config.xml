@@ -57,6 +57,6 @@
 
 
     <access origin="https://62.159.72.91/App_BTh/"/> <!-- Erlaubt den Kontakt zur definierten Adresse -->
-    <access origin="*"/> <!-- wird für Android benötigt -->
+    <access origin=*/> <!-- wird für Android benötigt -->
 
 </widget>
