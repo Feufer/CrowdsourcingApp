@@ -8,7 +8,32 @@
         <script src="js/jquery-1.10.2.min.js"></script>
         <script src="js/jquery.mobile-1.3.2.min.js"></script>
         <script>
-            
+            //Gelokalisierung um von anfang an eine Koordinate zu haben
+            //Variabeln für die WGS84-Koordinaten
+            var lat = '';
+            var long='';
+
+            //Definition der Parameter
+            var options = {
+                timeout: 31000,
+                enableHighAccuracy: true,
+                maximumAge: 90000 };
+
+            //Wartet bis Seite geladen ist.
+            document.addEventListener("deviceready", onDeviceReady, true);
+
+            // Funktion welche ausgeführt wird wenn die Seite geladen ist.
+            function onDeviceReady() {
+                navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+            }
+
+            //Funktion welche bei erfolgreicher Positionierung einsetzt
+            function onSuccess(position) {
+                //Abfüllen der Variabeln mit der aktuellen Position (WGS84-Koordinaten)
+                lat = position.coords.latitude;
+                lng = position.coords.longitude;
+                sessionStorage.setItem('lat', lat);
+                sessionStorage.setItem('lng', lng);
             
         </script>
         
@@ -19,7 +44,7 @@
                 <h1>Home</h1>
             </div>
             <ul class="menu">
-             <li id="one" onclick="href='+41614674242'">
+             <li id="one">
               <span class="title">Notruf</span>
              </li>
              <li id="two" onclick="location.href='html/Ereignis.html'">
@@ -37,7 +62,7 @@
              <li id="six">
               <span class="title">Erfassung Infrastruktur</span>
              </li>
-             <li id="seven" onclick="location.href='html/GPSErfassung.html'">
+             <li id="seven" onclick="location.href='html/Google_Adressen.html'">
               <span class="title">Übersichtskarte</span>
              </li>
              <li id="eight">
